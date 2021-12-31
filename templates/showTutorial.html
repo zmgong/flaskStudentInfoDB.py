@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                  <a href='showSpecificTutorialInfo/{{post.TAEmail}}/{{post.date|string}}/{{post.startTime|string}}'><p>Click to see specific tutorial info</p></a>
+                  <p>{{ post.TAEmail}}</p>
+              </div>
+              <a class="mr-0">{{ post.dateToShow}}</a>
+                <a class="mr-0">{{ post.startTimeToShow}}</a>
+                <a class="mr-0">{{ post.type}}</a>
+            </div>
+          </article>
+    {% endfor %}
+{% endblock content %}

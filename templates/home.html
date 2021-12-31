@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+              <a class="mr-2" href="#">{{'The total number of students is ' + post.NumberOFStudent|string }}</a>
+          </div>
+        </article>
+    {% endfor %}
+    {% for post in numberOfStudentInEachGrade %}
+        <article class="media content-section">
+          <div class="media-body">
+              <a class="mr-2" href="#">{{'There are ' + post.NumberOFStudent|string + ' student(s) in grade ' + post.grade|string + '.'}}</a>
+          </div>
+        </article>
+    {% endfor %}
+    {% for post in NumOfStuWithUnpaidFee %}
+        <article class="media content-section">
+          <div class="media-body">
+              <a class="mr-2" href="showStudentUnpaidFee">{{'The total number of students with unpaid fees: ' + post.NumOfStuWithUnpaidFee|string }}</a>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
+
+{% block content2 %}
+<ul class="list-group">
+    <a href=managerMain ><button class=grey style="height:75px;width:150px">Manage manager</button></a></p>
+</body>
+              </ul>
+{% endblock content2 %}
+
+

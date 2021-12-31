@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                  <a class="mr-0">{{ post.firstName}}</a>
+                  <a class="mr-0">{{ post.middleName}}</a>
+                  <a class="mr-0">{{ post.lastName}}</a>
+
+              </div>
+                <p class="mr-0">Email: {{ post.email}}</p>
+                <p class="mr-0">Phone: {{ post.phone}}</p>
+                <p class="mr-0">Phone: {{ post.phone}}</p>
+                <p class="mr-0">DOB: {{ post.dobToShow}}</p>
+            </div>
+            <a href='deleteManager/{{post.email}}' ><p>Delete this Manager</p></a>
+          </article>
+    {% endfor %}
+{% endblock content %}
+{% block content2 %}
+<ul class="list-group">
+    <a href=newManager ><button class=grey style="height:75px;width:150px">Add new manager</button></a></p>
+</body>
+              </ul>
+{% endblock content2 %}

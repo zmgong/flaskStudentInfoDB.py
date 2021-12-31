@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                  <a href='showSpecificTAInfo/{{post.email}}'><p>{{post.email}}</p></a>
+              </div>
+              <a class="mr-0">{{ post.firstName}}</a>
+                <a class="mr-0">{{ post.middleName}}</a>
+                <a class="mr-0">{{ post.lastName}}</a>
+            </div>
+          </article>
+    {% endfor %}
+{% endblock content %}

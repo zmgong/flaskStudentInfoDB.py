@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for post in posts %}
+<article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                  <a class="mr-0">{{post.firstName}}</a>
+                  <a class="mr-0">{{post.lastName}}</a>
+                  <a class="mr-0">{{post.UnpaidFee}}</a>
+              </div>
+
+            </div>
+</article>
+{% endfor %}
+
+<div class="content-section" xmlns="http://www.w3.org/1999/html">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Edit</legend>
+            <div class="form-group">
+                {{ form.studentUnpaidFee.label(class="form-control-label") }}
+                {% if form.studentUnpaidFee.errors %}
+                    {{ form.studentUnpaidFee(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.studentUnpaidFee.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.studentUnpaidFee(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock content %}

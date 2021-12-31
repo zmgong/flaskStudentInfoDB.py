@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for post in posts %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <p>TA: {{TAName.firstName}} {{TAName.middleName}} {{TAName.lastName}}</p>
+            <p>TA's email: {{post.TAEmail}}</p>
+
+        </div>
+        <a class="mr-0">Date and start time: {{post.dateToShow|string }} , {{post.startTimeToShow|string }}</a>
+        <p></p>
+        <p class="article-content">{{ 'Type: ' + post.type}}</p>
+        <p class="article-content">{{ 'Address/Link: ' + post.addressOrLink}}</p>
+        <p class="article-content">{{ 'Grade: ' + post.grade|string}}</p>
+        <p class="article-content">{{ 'Status: ' + post.status}}</p>
+
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}
+
+{% block content2 %}
+<form method="POST" action="">{% for post in posts %}
+    <a href="{{ url_for('home') }}">Go back</a>
+    <a href="{{ url_for('home') }}/deleteTutorial/{{post.TAEmail}}/{{post.date|string}}/{{post.startTime|string}}" ><p>Delete this Tutorial</p></a>
+    <a href="{{ url_for('home') }}/manageStudentForTutorial/{{post.TAEmail}}/{{post.date|string}}/{{post.startTime|string}}" ><p>Manage students of this tutorial</p></a>
+{% endfor %}
+    </form>
+{% endblock content2 %}

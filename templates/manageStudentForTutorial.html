@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+<article class="media content-section">
+<div class="media-body">
+<legend class="border-bottom mb-4">List of students</legend>
+{% for post in studentNameAndEmail %}
+              <div class="article-metadata">
+                  <a class="mr-0">Email: {{post.email}}</a>
+                  <div></div>
+                  <p class="mr-0">Name: {{post.firstName}} {{post.middleName}} {{post.lastName}}</p>
+                  <p class="mr-0">Grade: {{post.grade}} </p>
+                  <p class="mr-0">Price paid for this tutorial is: {{post.price}} </p>
+                  <a href="{{ url_for('home') }}/removeStudentFromTutorial/{{TAEmail}}/{{date|string}}/{{startTime|string}}/{{post.email}}" ><p>Remove</p></a>
+              </div>
+{% endfor %}
+    </div>
+    </article>
+<div class="content-section" xmlns="http://www.w3.org/1999/html">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Edit</legend>
+                <div class="form-group">
+                    {{ form.studentEmail.label(class="form-control-label") }}
+                    {% if form.studentEmail.errors %}
+                        {{ form.studentEmail(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.studentEmail.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.studentEmail(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.price.label(class="form-control-label") }}
+                    {% if form.price.errors %}
+                        {{ form.price(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.price.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.price(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}
